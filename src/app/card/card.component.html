@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 mb-3" *ngFor="let movie of movies|slice:start:end">
+            <div class="card" style="width: 15rem;">
+                <img [src]="movie.image" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{movie.name | uppercase}}</h5>
+                  <!-- <p class="card-text" [title]="movie.description ">{{movie.description | titlecase | slice:0:5}} ...</p> -->
+                  <p class="card-text" [title]="movie.description ">{{movie.description.length>10?((movie.description|slice:0:5)+"..."):movie.description}}</p>
+                  <p class="card-text">{{movie.rating}}</p>
+                  <p class="card-text">{{movie.movie_code|dash_to_anything:"--:--"}}</p>
+                  <p class="card-text">{{movie.release_date | date:"d/MMMM/y"}}</p>
+                  <p class="card-text">{{movie.ticket_price | currency:"INR":true:'3.2-2'}}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <nav aria-label="...">
+      <ul class="pagination pagination-md justify-content-end">
+        
+        <li class="page-item active"><a class="page-link"(click)="changePage(1)">1</a></li>
+        <li class="page-item"><a class="page-link" (click)="changePage(2)">2</a></li>
+        <li class="page-item"><a class="page-link" (click)="changePage(3)">3</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
